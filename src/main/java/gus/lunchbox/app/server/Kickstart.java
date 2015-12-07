@@ -1,12 +1,8 @@
 package gus.lunchbox.app.server;
 
-import com.sun.net.httpserver.HttpExchange;
-import com.sun.net.httpserver.HttpHandler;
 import com.sun.net.httpserver.HttpServer;
-
-import java.io.IOException;
-import java.io.OutputStream;
 import java.net.InetSocketAddress;
+import gus.lunchbox.app.handler.LoginHandler;
 
 /**
  * Created by alejandro.bustamante on 06/12/15.
@@ -32,7 +28,7 @@ public class Kickstart
     }
 
     public Kickstart loadRoutes() {
-        this.server.createContext("/z", new MyHandler());
+        this.server.createContext("/x", new LoginHandler());
         return this;
     }
 
@@ -44,16 +40,6 @@ public class Kickstart
     public Kickstart kickstart() {
         this.server.start();
         return this;
-    }
-
-    static class MyHandler implements HttpHandler {
-        public void handle(HttpExchange t) throws IOException {
-            String response = "This is the response zzzzz";
-            t.sendResponseHeaders(200, response.length());
-            OutputStream os = t.getResponseBody();
-            os.write(response.getBytes());
-            os.close();
-        }
     }
 
 }
