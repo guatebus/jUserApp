@@ -8,17 +8,17 @@ import java.net.InetSocketAddress;
  */
 public class Kickstart
 {
-    private Configurator configurator;
     private Router router;
+    private Configurator configurator;
     private HttpServer server;
 
-    public Kickstart(Configurator config, Router rtr) {
-        this.configurator = config;
+    public Kickstart(Router rtr, Configurator config) {
         this.router = rtr;
+        this.configurator = config;
     }
 
-    public static Kickstart build(Configurator config, Router rtr) {
-        return new Kickstart(config, rtr);
+    public static Kickstart build(Router rtr, Configurator config) {
+        return new Kickstart(rtr, config);
     }
 
     public Kickstart createServer() throws Exception {

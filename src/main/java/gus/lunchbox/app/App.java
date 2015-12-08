@@ -18,7 +18,7 @@ public class App {
             addRoute("/resource", ResourceHandler.class)
         ;
 
-        Kickstart.build(new Configurator(8000, 5), router).
+        Kickstart.build(router, new Configurator(8000, 5)).
             createServer().
             loadRoutes().
             setDefaultExecutor().
