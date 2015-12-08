@@ -2,7 +2,6 @@ package gus.lunchbox.app.server;
 
 import com.sun.net.httpserver.HttpServer;
 import java.net.InetSocketAddress;
-import gus.lunchbox.app.handler.LoginHandler;
 
 /**
  * Created by alejandro.bustamante on 06/12/15.
@@ -28,7 +27,9 @@ public class Kickstart
     }
 
     public Kickstart loadRoutes() {
-        this.server.createContext("/x", new LoginHandler());
+        this.router.
+            setServer(this.server).
+            loadRoutes();
         return this;
     }
 
